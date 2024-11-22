@@ -8,6 +8,7 @@ class HomePage(BasePage):
         self.logo_image = (AppiumBy.ID, "logo_view_base_image")
         self.partner_image = (AppiumBy.ID, "logo_view_partner_image")
         self.hamburger_button = (AppiumBy.CLASS_NAME, "android.widget.ImageButton")
+        self.wifi_motion_button = (AppiumBy.ID, "menu_wifi_motion")
 
         self.initial_views = [
             self.logo_image,
@@ -15,8 +16,19 @@ class HomePage(BasePage):
             self.hamburger_button
         ]
 
-
-
     def tap_hamburger_button(self):
-        self.wait_for_views(self.hamburger_button)
+        self.wait_for_views([self.hamburger_button])
         self.driver.find_element(*self.hamburger_button).click()
+
+    def tap_wifi_motion_button(self):
+        self.wait_for_views([self.wifi_motion_button])
+        self.driver.find_element(*self.wifi_motion_button).click()
+
+    def view_initial_views(self):
+        self.wait_for_views(
+            [
+                self.logo_image,
+                self.partner_image,
+                self.hamburger_button
+            ]
+        )
