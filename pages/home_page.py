@@ -13,22 +13,16 @@ class HomePage(BasePage):
         self.initial_views = [
             self.logo_image,
             self.partner_image,
-            self.hamburger_button
+            self.hamburger_button,
+            self.wifi_motion_button
         ]
 
     def tap_hamburger_button(self):
         self.wait_for_views([self.hamburger_button])
         self.driver.find_element(*self.hamburger_button).click()
+        return self
 
     def tap_wifi_motion_button(self):
         self.wait_for_views([self.wifi_motion_button])
         self.driver.find_element(*self.wifi_motion_button).click()
-
-    def view_initial_views(self):
-        self.wait_for_views(
-            [
-                self.logo_image,
-                self.partner_image,
-                self.hamburger_button
-            ]
-        )
+        return self

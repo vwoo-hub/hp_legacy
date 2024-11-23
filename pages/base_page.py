@@ -1,5 +1,5 @@
-from contextlib import ContextDecorator
 
+from contextlib import contextmanager
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -11,20 +11,12 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
-    class PageReady(ContextDecorator):
-        def __init__(self, base_page):
-            self.base_page = base_page
+    @contextmanager
+    def wait_for_page(self, timeout=5):
+        self.wait_for_views(self.initial_views, timeout)
+        yield self
 
-        def __enter__(self):
-            self.base_page.wait_for_views(self.base_page.initial_views)
-
-        def __exit__(self, exc_type, exc_val, exc_tb):
-            pass
-
-    def with_page_when_ready(self):
-        return self.PageReady(self)
-
-    def wait_for_views(self, matchers, timeout=10, condition="visible"):
+    def wait_for_views(self, matchers, timeout=5, condition="visible"):
         elements = []
         for matcher in matchers:
             try:
