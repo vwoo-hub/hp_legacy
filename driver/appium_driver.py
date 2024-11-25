@@ -1,6 +1,7 @@
+import pytest
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
-import pytest
+
 
 class AppiumDriver:
     driver = None
@@ -8,30 +9,37 @@ class AppiumDriver:
     @pytest.fixture()
     def start_driver(self, request):
         android_app_path = "/Users/vwoo/PycharmProjects/hp_legacy/build/legacy.apk"
-        #android_app_path = "/Users/vwoo/PycharmProjects/hp_legacy/build/app.apk"
+        # android_app_path = "/Users/vwoo/PycharmProjects/hp_legacy/build/app.apk"
 
         desired_caps = {
             'deviceName': 'Android',
             'platformName': 'Android',
             'automationName': 'UIAutomator2',
-            'newCommandTimeout': 100,
+            'newCommandTimeout': 300,
             'app': android_app_path
-            #'autoGrantPermissions': True
+            # 'autoGrantPermissions': True
         }
 
-        # start appium driver
+        # Start Appium driver
         capabilities_options = UiAutomator2Options().load_capabilities(desired_caps)
         self.driver = webdriver.Remote('http://127.0.0.1:4723', options=capabilities_options)
         self.driver.implicitly_wait(7)
 
-        # make driver available to tests
         request.cls.driver = self.driver
+        print("Driver initialized")
 
         yield self.driver
 
-        # teardown
         self.stop_driver()
+        print("Driver teardown called")
 
     def stop_driver(self):
         if self.driver:
-            self.driver.quit()
+            try:
+                print("Quitting driver...")
+                self.driver.quit()
+            except Exception as e:
+                print(f"Driver quit failed: {e}")
+        else:
+            print("Driver already None or terminated.")
+

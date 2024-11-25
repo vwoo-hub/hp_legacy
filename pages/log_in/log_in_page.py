@@ -9,13 +9,13 @@ class LogInPage(BasePage):
         self.email_text_field = (AppiumBy.ANDROID_UIAUTOMATOR, "new UiSelector().text(\"Email\")")
         self.password_text_field = (AppiumBy.ANDROID_UIAUTOMATOR, "new UiSelector().text(\"Password\")")
         self.forgot_password_button = (AppiumBy.ID, "forgot_password_textView")
-        self.next_button = (AppiumBy.ID, 'next_button')
+        self.sign_in_button = (AppiumBy.ID, 'next_button')
 
         self.initial_views = [
-            self.email_text_field,
+            #self.email_text_field,
             self.password_text_field,
             self.forgot_password_button,
-            self.next_button
+            self.sign_in_button
         ]
 
     # actions
@@ -32,7 +32,7 @@ class LogInPage(BasePage):
         self.driver.find_element(*self.forgot_password_button).click()
         return self
 
-    def tap_next_button(self):
-        self.driver.find_element(*self.next_button).click()
+    def tap_sign_in_button(self):
+        self.driver.find_element(*self.sign_in_button).click()
         return self
 
