@@ -1,7 +1,7 @@
 import pytest
 
 from pages.landing_page import LandingPage
-from pages.log_in.log_in_page import LogInPage
+from pages.sign_in.sign_in_page import LogInPage
 from pages.sign_up.email_exists_dialog_page import EmailExistsDialogPage
 from pages.sign_up.sign_up_page import SignUpPage
 from pages.sign_up.sign_up_password_page import SignUpPasswordPage
