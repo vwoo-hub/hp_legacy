@@ -1,1 +1,4 @@
 build/
+allure-report/
+reports/
+logs/

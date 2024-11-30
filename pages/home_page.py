@@ -20,11 +20,9 @@ class HomePage(BasePage):
         ]
 
     def tap_hamburger_button(self):
-        self.wait_for_views([self.hamburger_button])
         self.driver.find_element(*self.hamburger_button).click()
         return self
 
     def tap_wifi_motion_button(self):
-        self.wait_for_views([self.wifi_motion_button])
         self.driver.find_element(*self.wifi_motion_button).click()
         return self

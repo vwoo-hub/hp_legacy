@@ -44,4 +44,3 @@ class BasePage:
     def scroll_to_matcher(self, matcher):
         self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
                                  f'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView({matcher})')
-
