@@ -1,7 +1,7 @@
 import pytest
 
 from pages.landing_page import LandingPage
-from pages.sign_in.sign_in_page import LogInPage
+from pages.sign_in.sign_in_page import SignInPage
 from pages.sign_up.email_exists_dialog_page import EmailExistsDialogPage
 from pages.sign_up.sign_up_page import SignUpPage
 from pages.sign_up.sign_up_password_page import SignUpPasswordPage
@@ -20,7 +20,7 @@ class TestSignUp(BaseTest):
         self.sign_up_password_page = SignUpPasswordPage(self.driver)
         self.sign_up_verification_page = SignUpVerificationPage(self.driver)
         self.email_exists_dialog_page = EmailExistsDialogPage(self.driver)
-        self.log_in_page = LogInPage(self.driver)
+        self.sign_in_page = SignInPage(self.driver)
 
     def test_when_valid_credentials_then_show_verify_email(self):
         with self.landing_page.wait_for_page(10) as page:
@@ -56,5 +56,18 @@ class TestSignUp(BaseTest):
         with self.email_exists_dialog_page.wait_for_page() as page:
             page.tap_sign_in_button()
 
-        with self.log_in_page.wait_for_page():
+        with self.sign_in_page.wait_for_page():
             pass
+
+    def test_when_invalid_name_then_shows_error_label(self):
+        with self.landing_page.wait_for_page(10) as page:
+            page.tap_set_up_plume_button()
+
+        with self.terms_and_conditions_page.wait_for_page() as page:
+            page.tap_accept_button()
+
+        with self.sign_up_page.wait_for_page() as page:
+            page.type_name_field("vwoo")
+            page.type_email_field("vwoo+hp@plume.com")
+            page.tap_next_button()
+            page.view_invalid_name_error_label()
