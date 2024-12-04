@@ -10,7 +10,7 @@ class NavigationSidebarPage(BasePage):
         self.plume_logo_icon = (AppiumBy.ID, "logo_view_base_image")
         self.name_label = (AppiumBy.ID, 'name_TextView')
         self.email_label = (AppiumBy.ID, 'email_TextView')
-        self.adapt_button = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Guard")')
+        self.adapt_button = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Adapt")')
         self.access_button = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Access")')
         self.guard_button = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Guard")')
         self.sense_button = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Sense")')
@@ -31,12 +31,12 @@ class NavigationSidebarPage(BasePage):
             self.sign_out_button
         ]
 
-    def tap_hamburger_button(self):
-        self.wait_for_views([self.hamburger_button])
-        self.driver.find_element(*self.hamburger_button).click()
+    def tap_adapt_button(self):
+        self.wait_for_views([self.adapt_button])
+        self.driver.find_element(*self.adapt_button).click()
         return self
 
-    def tap_wifi_motion_button(self):
-        self.wait_for_views([self.wifi_motion_button])
-        self.driver.find_element(*self.wifi_motion_button).click()
+    def tap_sign_out_button(self):
+        self.wait_for_views([self.sign_out_button])
+        self.driver.find_element(*self.sign_out_button).click()
         return self
