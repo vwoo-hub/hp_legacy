@@ -36,7 +36,14 @@ class NavigationSidebarPage(BasePage):
         self.driver.find_element(*self.adapt_button).click()
         return self
 
+    def tap_support_button(self):
+        self.wait_for_views([self.sign_out_button])
+        self.driver.find_element(*self.support_button).click()
+        return self
+
     def tap_sign_out_button(self):
         self.wait_for_views([self.sign_out_button])
         self.driver.find_element(*self.sign_out_button).click()
         return self
+
+
