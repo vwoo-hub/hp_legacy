@@ -1,3 +1,0 @@
-Driver initialized
-Quitting driver...
-Driver teardown called
