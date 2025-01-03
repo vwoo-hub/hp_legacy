@@ -2,3 +2,5 @@ build/
 allure-report/
 reports/
 logs/
+__pycache__/
+.idea/

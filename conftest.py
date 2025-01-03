@@ -8,7 +8,6 @@ def pytest_runtest_makereport(item, call):
     outcome = yield
     report = outcome.get_result()
     if report.when == "call" and report.failed:
-        # Capture screenshot on failure
         driver = getattr(item.instance, 'driver', None)
         if driver:
             try:
