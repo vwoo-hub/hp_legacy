@@ -36,6 +36,11 @@ class NavigationSidebarPage(BasePage):
         self.driver.find_element(*self.adapt_button).click()
         return self
 
+    def tap_guard_button(self):
+        self.wait_for_views([self.guard_button])
+        self.driver.find_element(*self.guard_button).click()
+        return self
+
     def tap_support_button(self):
         self.wait_for_views([self.sign_out_button])
         self.driver.find_element(*self.support_button).click()
