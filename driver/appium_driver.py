@@ -20,7 +20,6 @@ class AppiumDriver:
             # 'autoGrantPermissions': True
         }
 
-        # Start Appium driver
         capabilities_options = UiAutomator2Options().load_capabilities(desired_caps)
         self.driver = webdriver.Remote('http://127.0.0.1:4723', options=capabilities_options)
         self.driver.implicitly_wait(7)
