@@ -11,6 +11,7 @@ class HomePage(BasePage):
         self.partner_image = (AppiumBy.ID, "logo_view_partner_image")
         self.hamburger_button = (AppiumBy.CLASS_NAME, "android.widget.ImageButton")
         self.wifi_motion_button = (AppiumBy.ID, "menu_wifi_motion")
+        self.quarantine_alert_button = (AppiumBy.ID, "Button_alertBadge")
 
         self.initial_views = [
             self.logo_image,
@@ -25,4 +26,8 @@ class HomePage(BasePage):
 
     def tap_wifi_motion_button(self):
         self.driver.find_element(*self.wifi_motion_button).click()
+        return self
+
+    def tap_quarantine_alert_button(self):
+        self.driver.find_element(*self.quarantine_alert_button).click()
         return self
