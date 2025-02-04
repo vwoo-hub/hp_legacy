@@ -1,4 +1,4 @@
-# hp_legacy
+# Appium automation framework for hp_legacy
 An Appium automation framework for a legacy wifi optimization app that uses Pytest. 
 
 * Prereqs (for Mac):
