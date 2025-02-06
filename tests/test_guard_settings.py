@@ -8,6 +8,7 @@ from pages.sign_in.sign_in_page import SignInPage
 from tests.base_test import BaseTest
 
 
+@pytest.mark.sign_in_required
 class TestGuardSettings(BaseTest):
     @pytest.fixture(autouse=True)
     def setup_pages(self):
@@ -18,14 +19,6 @@ class TestGuardSettings(BaseTest):
         self.guard_settings_page = GuardSettingsPage(self.driver)
 
     def test_when_navigate_to_guard_then_verify_ui_elements(self):
-        with self.landing_page.wait_for_page() as page:
-            page.tap_log_in_button()
-
-        with self.sign_in_page.wait_for_page() as page:
-            page.type_email_text_field("vwoo+hp@plume.com")
-            page.type_password_text_field("plumewifi1")
-            page.tap_sign_in_button()
-
         with self.home_page.wait_for_page() as page:
             page.tap_hamburger_button()
 

@@ -3,9 +3,9 @@ import pytest
 from pages.home_page import HomePage
 from pages.landing_page import LandingPage
 from pages.sign_in.incorrect_password_dialog_page import IncorrectPasswordDialogPage
-from pages.sign_in.sign_in_page import SignInPage
 from pages.sign_in.reset_password_dialog_page import ResetPasswordDialogPage
 from pages.sign_in.reset_password_page import ResetPasswordPage
+from pages.sign_in.sign_in_page import SignInPage
 from tests.base_test import BaseTest
 
 

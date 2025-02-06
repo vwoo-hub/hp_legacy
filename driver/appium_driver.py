@@ -16,8 +16,8 @@ class AppiumDriver:
             'platformName': 'Android',
             'automationName': 'UIAutomator2',
             'newCommandTimeout': 300,
-            'app': android_app_path
-            # 'autoGrantPermissions': True
+            'app': android_app_path,
+            'autoGrantPermissions': True
         }
 
         capabilities_options = UiAutomator2Options().load_capabilities(desired_caps)
