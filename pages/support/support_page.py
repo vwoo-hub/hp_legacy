@@ -39,3 +39,6 @@ class SupportPage(BasePage):
         self.driver.find_element(*self.back_button).click()
         return self
 
+    def tap_faq_button(self):
+        self.driver.find_element(*self.faq_button).click()
+

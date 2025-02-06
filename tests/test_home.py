@@ -8,7 +8,6 @@ from pages.suspicious_activity_banner_page import SuspiciousActivityBannerPage
 from pages.suspicious_activity_page import SuspiciousActivityPage
 from tests.base_test import BaseTest
 
-
 class TestHome(BaseTest):
     @pytest.fixture(autouse=True)
     def setup_pages(self):

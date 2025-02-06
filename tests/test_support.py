@@ -4,6 +4,7 @@ from pages.home_page import HomePage
 from pages.landing_page import LandingPage
 from pages.navigation_sidebar_page import NavigationSidebarPage
 from pages.sign_in.sign_in_page import SignInPage
+from pages.support.faq_page import FaqPage
 from pages.support.support_page import SupportPage
 from tests.base_test import BaseTest
 
@@ -16,7 +17,7 @@ class TestAdapt(BaseTest):
         self.home_page = HomePage(self.driver)
         self.navigation_sidebar_page = NavigationSidebarPage(self.driver)
         self.support_page = SupportPage(self.driver)
-
+        self.faq_page = FaqPage(self.driver)
 
     def test_when_navigate_to_support_then_verify_ui_elements(self):
         with self.landing_page.wait_for_page() as page:
@@ -32,6 +33,31 @@ class TestAdapt(BaseTest):
 
         with self.navigation_sidebar_page.wait_for_page() as page:
             page.tap_support_button()
+
+        with self.support_page.wait_for_page():
+            pass
+
+    def test_when_navigate_to_faq_then_display_faq_webview(self):
+        with self.landing_page.wait_for_page() as page:
+            page.tap_log_in_button()
+
+        with self.sign_in_page.wait_for_page() as page:
+            page.type_email_text_field("vwoo+hp@plume.com")
+            page.type_password_text_field("plumewifi1")
+            page.tap_sign_in_button()
+
+        with self.home_page.wait_for_page() as page:
+            page.tap_hamburger_button()
+
+        with self.navigation_sidebar_page.wait_for_page() as page:
+            page.tap_support_button()
+
+        with self.support_page.wait_for_page() as page:
+            page.tap_faq_button()
+
+        with self.faq_page.wait_for_page() as page:
+            page.type_search_text_field("test search query")
+            page.tap_back_button()
 
         with self.support_page.wait_for_page():
             pass
