@@ -22,7 +22,6 @@ class BaseTest(AppiumDriver):
     def pre_sign_in(self):
         self.landing_page = LandingPage(self.driver)
         self.sign_in_page = SignInPage(self.driver)
-        self.home_page = HomePage(self.driver)
 
         with self.landing_page.wait_for_page() as page:
             page.tap_log_in_button()
@@ -31,9 +30,6 @@ class BaseTest(AppiumDriver):
             page.type_email_text_field("vwoo+hp@plume.com")
             page.type_password_text_field("plumewifi1")
             page.tap_sign_in_button()
-
-        with self.home_page.wait_for_page():
-            pass
 
     @pytest.fixture(autouse=True)
     def screenshot_failure(self, request):

@@ -1,6 +1,7 @@
 import pytest
 
 from pages.adapt.adapt_page import AdaptPage
+from pages.home_page import HomePage
 from pages.navigation_sidebar_page import NavigationSidebarPage
 from pages.nodes.pod_action_sheet_page import PodActionSheetPage
 from pages.nodes.pod_details_page import PodDetailsPage
@@ -12,6 +13,7 @@ from tests.base_test import BaseTest
 class TestAdapt(BaseTest):
     @pytest.fixture(autouse=True)
     def setup_pages(self):
+        self.home_page = HomePage(self.driver)
         self.navigation_sidebar_page = NavigationSidebarPage(self.driver)
         self.adapt_page = AdaptPage(self.driver)
         self.pod_details_page = PodDetailsPage(self.driver)

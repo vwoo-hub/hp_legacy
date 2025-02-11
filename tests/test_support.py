@@ -1,5 +1,6 @@
 import pytest
 
+from pages.home_page import HomePage
 from pages.navigation_sidebar_page import NavigationSidebarPage
 from pages.support.faq_page import FaqPage
 from pages.support.support_page import SupportPage
@@ -10,6 +11,7 @@ from tests.base_test import BaseTest
 class TestAdapt(BaseTest):
     @pytest.fixture(autouse=True)
     def setup_pages(self):
+        self.home_page = HomePage(self.driver)
         self.navigation_sidebar_page = NavigationSidebarPage(self.driver)
         self.support_page = SupportPage(self.driver)
         self.faq_page = FaqPage(self.driver)

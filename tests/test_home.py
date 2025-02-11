@@ -1,5 +1,6 @@
 import pytest
 
+from pages.home_page import HomePage
 from pages.navigation_sidebar_page import NavigationSidebarPage
 from pages.suspicious_activity_banner_page import SuspiciousActivityBannerPage
 from pages.suspicious_activity_page import SuspiciousActivityPage
@@ -10,6 +11,7 @@ from tests.base_test import BaseTest
 class TestHome(BaseTest):
     @pytest.fixture(autouse=True)
     def setup_pages(self):
+        self.home_page = HomePage(self.driver)
         self.navigation_sidebar_page = NavigationSidebarPage(self.driver)
         self.suspicious_activity_banner_page = SuspiciousActivityBannerPage(self.driver)
         self.suspicious_activity_page = SuspiciousActivityPage(self.driver)
