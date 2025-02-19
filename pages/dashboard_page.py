@@ -9,7 +9,7 @@ class DashboardPage(BasePage):
 
         self.back_button = (AppiumBy.CLASS_NAME, "android.widget.ImageButton")
         self.title_label = (AppiumBy.ID, 'TextView_greeting')
-        self.subtitle_label = (AppiumBy.ID, 'TextView_speedLevel')
+        self.speed_quality_label = (AppiumBy.ID, 'TextView_speedLevel')
         self.last_24h_tab = (AppiumBy.ACCESSIBILITY_ID, 'Last 24 hrs')
         self.last_7d_tab = (AppiumBy.ACCESSIBILITY_ID, 'Last 7 days')
         self.last_30d_tab = (AppiumBy.ACCESSIBILITY_ID, 'Last 30 days')
@@ -33,7 +33,7 @@ class DashboardPage(BasePage):
         self.initial_views = [
             self.back_button,
             self.title_label,
-            self.subtitle_label,
+            self.speed_quality_label,
             self.last_24h_tab,
             self.last_7d_tab,
             self.last_30d_tab,
@@ -48,4 +48,8 @@ class DashboardPage(BasePage):
 
     def tap_back_button(self):
         self.driver.find_element(*self.back_button).click()
+        return self
+
+    def tap_speed_quality_label(self):
+        self.driver.find_element(*self.speed_quality_label).click()
         return self
