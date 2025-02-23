@@ -21,7 +21,7 @@ class AppiumDriver:
         }
 
         capabilities_options = UiAutomator2Options().load_capabilities(desired_caps)
-        self.driver = webdriver.Remote('http://127.0.0.1:4723', options=capabilities_options)
+        self.driver = webdriver.Remote(command_executor="http://127.0.0.1:4723", options=capabilities_options)
         self.driver.implicitly_wait(7)
 
         request.cls.driver = self.driver
